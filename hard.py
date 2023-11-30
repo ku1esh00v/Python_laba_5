@@ -14,13 +14,12 @@ if __name__ == '__main__':
     else:
         EPS = float(input("Enter the accuracy value: "))
         result = 0
-        tekushee_slagaemoe = 1
         k = 0
+        tekushee_slagaemoe = 1 / math.factorial(n)
 
-        while abs(tekushee_slagaemoe) > EPS:
-            tekushee_slagaemoe = ((x / 2) ** (2 * k + n)) / (math.factorial(k) * math.factorial(k + n))
+        while math.fabs(tekushee_slagaemoe) > EPS:
+            tekushee_slagaemoe *= x ** 2 / (4 * (k + n + 1) * (k + 1))
             result += tekushee_slagaemoe
             k += 1
 
-        bessel_value = result
-        print("The value of the Bessel function of the first kind:", bessel_value)
+        print(f'I{n}({x}) = {((x / 2) ** n) * result}')
